@@ -4,6 +4,7 @@ class BinarySearch(list):
 		self.a = a
 		self.b = b    
 		for i in range(1,a+1):
+			# print("i: %s and b: %s" %(i,b))
 			self.append(i*b)
 
 		self.length = len(self)
@@ -28,29 +29,38 @@ class BinarySearch(list):
 		right = self.length - 1
 		
 		count = 0
+		print("target: ",target)
 		while 1:
 			# print("count ",count)
 
 			middle = ((left + right) // 2) 
 			if left > right or middle > right:
-				# Not found
+				print("left(%d) > right(%d) middle(%d)"%(left, right, middle))
+				print("404 %s Not found" %target)
 				return {'count':count, 'index':-1}
 			
-
+			print("left: %s(%s) middle: %s(%s) right: %s(%s) " %(left,self[left],
+				middle, self[middle],right, self[right]))
+			# print("middle target: ",self[middle])
 			if self[middle] == target:
 				return {'count':count, 'index':middle}
 			elif self[right] == target:
 				return {'count':count, 'index':right}
 			elif self[left] == target:
 				return {'count':count, 'index':left}
+			elif middle==left or middle==right:
+				print("left(%d) > right(%d) middle(%d)"%(left, right, middle))
+				print("404 2nd %s Not found" %target)
+				return {'count':count, 'index':-1}			
 			elif self[middle] < target:
+				# middle = ((left + right) // 2) + 1
 				left = middle + 1
 			elif self[middle] > target:
+				# middle = ((left + right) // 2)
 				right = middle - 1
 
-			if middle==left or middle==right:
-				# not found
-				return {'count':count, 'index':-1}
+
+			print("starting if..")
 			count+=1
 
 
