@@ -29,19 +29,13 @@ class BinarySearch(list):
 		right = self.length - 1
 		
 		count = 0
-		print("target: ",target)
 		while 1:
 			# print("count ",count)
 
 			middle = ((left + right) // 2) 
 			if left > right or middle > right:
-				print("left(%d) > right(%d) middle(%d)"%(left, right, middle))
-				print("404 %s Not found" %target)
 				return {'count':count, 'index':-1}
 			
-			print("left: %s(%s) middle: %s(%s) right: %s(%s) " %(left,self[left],
-				middle, self[middle],right, self[right]))
-			# print("middle target: ",self[middle])
 			if self[middle] == target:
 				return {'count':count, 'index':middle}
 			elif self[right] == target:
@@ -49,8 +43,6 @@ class BinarySearch(list):
 			elif self[left] == target:
 				return {'count':count, 'index':left}
 			elif middle==left or middle==right:
-				print("left(%d) > right(%d) middle(%d)"%(left, right, middle))
-				print("404 2nd %s Not found" %target)
 				return {'count':count, 'index':-1}			
 			elif self[middle] < target:
 				# middle = ((left + right) // 2) + 1
@@ -58,25 +50,5 @@ class BinarySearch(list):
 			elif self[middle] > target:
 				# middle = ((left + right) // 2)
 				right = middle - 1
-
-
-			print("starting if..")
 			count+=1
-
-
-if __name__ == '__main__':
-	# one_to_twenty = BinarySearch(20, 1)
-	ten_to_thousand = BinarySearch(100, 10)
-	two_to_forty = BinarySearch(20, 2)
-	# print(one_to_twenty)
-	# print(one_to_twenty.length)
-	# print(ten_to_thousand)
-	# print(ten_to_thousand.length)
-	print(two_to_forty)
-	# print(two_to_forty.search(16))
-	# print(two_to_forty.search(40))
-	print(two_to_forty.search(33))
-	# print(ten_to_thousand.search(40))
-	# print(ten_to_thousand.search(880))
-	# print(ten_to_thousand.search(10000))
 
